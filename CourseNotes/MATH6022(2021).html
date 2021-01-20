@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta name="author" content="Yunsong Wei">
+  <meta charset="utf-8">
+  <link rel="short icon" href="../favicon.ico" type="image/vnd.microsoft.icon">
+
+  <link rel="stylesheet" type="text/css" href="../assets/style(nonmenu).css">
+
+  <title>Topics in Geometry</title>
+  <script src="http://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js"></script>
+
+  <script>
+  $(document).ready(function(e) {
+  	$("#newcontent").children().each(function(index, element) {
+  		var tagName=$(this).get(0).tagName;
+  		if(tagName.substr(0,2).toUpperCase()=="H2"){
+  			var newcontentH=$(this).html();//获取内容
+  			var markid="mark-"+tagName+"-"+index.toString();
+  			$(this).attr("id",markid);//为当前h标签设置id
+  			$(".newmenu").append("<a href='#"+markid+"'>"+newcontentH+"</a>");//在目标DIV中添加内容
+  		}
+  	});
+  });
+  </script>
+
+</head>
+
+<body>
+
+    <script type="text/javascript" src="../../../draggable.js">
+
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+
+  };
+  </script>
+
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<div id="banner" style="background:url(../banners/banner1.png)"></div>
+<!-- banner -->
+<div id="header">
+    <h1 style="color:lightblue; font-size:28px">---Conan Leung</h1>
+    <h1 style="color:lightblue;">Topics in geometry</h1>
+
+  <a name="top"></a>
+</div>
+<div  style="height:10px">
+
+</div>
+<div id="body">
+
+
+  <div class="page">
+
+
+
+    <a href="../index.html">BACK</a>
+    <div class="white" style="height:-10px;padding:5px;margin:5px;">
+    </div>
+    <div class="newmenu">
+
+      <a style="color:grey;font-style:bold">Content</a> </div>
+    Course Website of Current Academic Year:
+    <li><a href="https://www.math.cuhk.edu.hk/course/2021/math6022">MATH6022 - Topics in Geometry II - 2020/21</a></li>
+    For Conan's previous years references:
+    <li><a href="https://www.math.cuhk.edu.hk/course/1617/math6021b">MATH6021B - Topics in Geometry I - 2016/17</a> </li>
+    <li><a href="https://www.math.cuhk.edu.hk/course/1718/math6021a">MATH6021A - Topics in Geometry I - 2017/18</a> </li>
+    <li><a href="https://www.math.cuhk.edu.hk/course/1718/math6022a">MATH6022A - Topics in Geometry II - 2017/18</a> </li>
+    <li><a href="https://www.math.cuhk.edu.hk/course/1819/math6021a">MATH6021A - Topics in Geometry I - 2018/19</a> </li>
+    <li><a href="https://www.math.cuhk.edu.hk/course/1819/math6022b">MATH6022B - Topics in Geometry II - 2018/19</a> </li>
+    <div id="newcontent">
+    <h2>0. Introduction</h2>
+
+    <p>In this course, the spaces here we consider are manifolds, which are locally homeomorphic to $\mathbb{R}^n$ and $\mathbb{C}^n$ with transition functions being continuous, smooth, holomorphic, polynomial, or affine, and the manifold are so called topological manifold, smooth manifold, analytic manifold, polynomial manifold, and affine manifold respectively. It shall be obvious from the context that the manifold is in which category.</p>
+    <p>We are interested in the following questions.</p>
+    <ol>
+      <li><b>Embedding theorems</b>: When and how can a manifold be embedded in an Euclidean space.</li>
+      <li><b>Intersection theory</b>: Fix a space, we form such a category:
+        <ul>
+          <li>objects:Subspace("coherent sheaf")</li>
+          <li>morphisms:Intersection("higher structure")</li>
+        </ul>
+      </li>
+      <li><b>Duality theory</b> </li>
+    </ol>
+    <hr>
+    <p>Basic references are the following:
+    </p>
+    <ul>
+      <li>Manifods
+        <ul>
+          <li>  <a href="https://www.springer.com/gp/book/9780387908946">Foundations of Differentiable Manifolds and Lie Groups</a> </li>
+        </ul>
+      </li>
+
+      <li>Topology
+        <ul>
+          <li> <a href="https://www.springer.com/gp/book/9780387906133">Differential Forms in Algebraic Topology</a> </li>
+          <li><a href="https://www.amazon.com/Topology-Differentiable-Viewpoint-Willard-Milnor/dp/0691048339">Topology from the Differentiable Viewpoint</a> </li>
+          <li><a href="https://www.amazon.com/Morse-Theory-Annals-Mathematic-Studies/dp/0691080089">Morse Theory</a> </li>
+          <li><a href="https://www.amazon.com/Characteristic-Classes-AM-76-John-Milnor/dp/0691081220">Characteristic Classes</a> </li>
+          <li><a href="https://www.amazon.com/Algebraic-Topology-Course-Mathematics-Lecture/dp/0805335579">Algebraic Topology: A First Course</a> </li>
+        </ul></li>
+      <li>Complex geometry and algebraic geometry
+        <ul>
+          <li><a href="https://www.amazon.com/Principles-Algebraic-Geometry-Phillip-Griffiths/dp/0471050598">Principles of Algebraic Geometry</a> </li>
+          <li><a href="https://www.springer.com/gp/book/9780387902449">Algebraic Geometry</a> </li>
+        </ul>
+      </li>
+    </ul>
+    <hr>
+    <p>So what is "manifold"? We could describe them both extrinsically and intrinsically. </p>
+    <ul>
+      <li> <u>Extrinsically</u>: Given a finite set of smooth functions $\{f_i\}_{i=1,...,r}$ with $r< 0$, if the differential $d \vec{f}(x): \mathbb{R}^N\rightarrow \mathbb{R}^r $ is of full rank at the zero locus $M:=f^{-1}(0)$, then $M$ is locally isomorphic to $\mathbb{R}^{N-r}$. </li>
+      <li><u>Intrinsically</u>: A manifold is locally Euclidean, and we need to avoid some pathological properties. For example, we don't like things like the affine line with a doubled point. Thus we usually add to enough good separated conditions. In classical topology, we assume the manifold is Hausdorff. In Zaraski topology we assume the variety is separated.</li>
+    </ul>
+    <h2>I. Embedding theorems</h2>
+    <p>For a space/manifold $M$, we shall ask if we can extrinsically describe it. To be precise, when does there exists an embedding $M\hookrightarrow \mathbb{R}^N$ such that the embedding is <ul>
+      <li>smooth</li>
+      <li>isometrical</li>
+      <li>holomorphic</li>
+      <li>...</li>
+    </ul> </p>
+    <p>In the following we shall give clues to the first three questions.</p>
+    <p>Let $\vec{f}:M\rightarrow \mathbb{R}^N$ be a smooth map. This is equivalent to choose $f_1,...,f_N\in C^\infty(M)$. Let $V\subset C^\infty(M)$ be the vector space generated by $f_1,...,f_N$, then $\vec{f}:M\rightarrow V^*$ is a more natural expression, where $\vec{f}$ sends each point to the restriction of the corresponding Dirac delta function at that point. </p>
+    <p>The idea for $\vec{f}$ to become an embedding are the following conditions</p>
+    <ul>
+      <li>$V$ <b> <i> separates points</i></b>. $\vec{f}$ is injective if and only if all the delta functions behaves differently when restricted to $V$.</li>
+      <li>$V$ <b> <i> separates tangent vectors</i></b>. This condition wipes out singular immersions like $t\mapsto (t^2, t^3)$.</li>
+    </ul>
+    <p>The keynote for the embedding condition to be satified is to find enough sections to create a "large enough" $V$.</p>
+    <h3>I.1. Smooth setting</h3>
+    <p>For a smooth manifold $M^n$ of dimension n, the <a href="https://en.wikipedia.org/wiki/Whitney_embedding_theorem"><span>Whitney embedding theorem </span></a> answers our question.</p>
+    <div class="theorem">
+    <span>Whitney embedding theorem (strong version)</span> <br>
+      Any smooth real m-dimensional manifold  can be smoothly embedded in the real 2m-space $\mathbb{R}^{2m}$.
+    </div>
+    <p>Here we provide an easy method to show that an n-dimensional manifold with finite charts can be embedded into a 2n+1-dimensional Euclidean space.</p>
+    <p>Let $M^n=\bigcup_{k=1}^{N} U_k$ where $\iota_k: U_k\rightarrow \mathbb{R}^n$ are charts of $M$. Then there exists a smooth partition of unity $\{\rho_k\}$ subordinated to $\{U_k\}$. Then it is routine to verify that
+      $$\begin{align}
+          f: M & \rightarrow (\mathbb{R}^n)^N\\
+            x & \mapsto (\rho_k(x)\iota_k(x))
+        \end{align}
+      $$
+    is an embedding.
+    </p>
+    <p>If now $M^n$ is embedded in an Euclidean space of dimension $N$ which is larger than $2n+1$, since the "secant variety" $\overline{\bigcup_{p,q\in M} \mathscr{l}_{p,q}}$ is the closure of the image of an (2n+1)-dimensional manifold, we can project $\mathbb{R}^N$ along an axis to  $\mathbb{R}^{N-1}$ such that the projection separates points and tangent vectors of $M$. This process terminates when $N=2n+1$.   </p>
+    <h3>I.2. Riemannian Setting</h3>
+    <p>For a Riemannian manifold $(M,g)$ of dimension n, the <a href="https://en.wikipedia.org/wiki/Nash_embedding_theorem"><span>Nash embedding theorem</span></a> answers our question.</p>
+    <h3>I.3. Complex Setting</h3>
+    <p>There is no way for a nontrivial compact complex manifold to be embedded into $\mathbb{C}^N$ holomorphically by maximal principle. We shall replace $\mathbb{C}^N$ with another understandable complex manifolds. Quite like the n-sphere $\mathbb{S}^n=\mathbb{R}^n\cup \{\infty\}\supset \mathbb{R}^n$, $\mathbb{CP}^N=\mathbb{C}^N\cup\mathbb{CP}^{N-1}$ is in favour, and we have the following <a href="https://en.wikipedia.org/wiki/Kodaira_embedding_theorem">Kodaire embedding theorem</a> </p>
+    <div class="theorem">
+      <span>Kodaire embedding theorem</span><br>
+      A compact complex manifold $M$ can be embedded holomorphically into a complex projective space if and only if there exists a positive holomorphic line(i.e, with positive curvature form) bundle over $M$.
+    </div>
+    <div class="theorem">
+      <span>Remark:</span><br>
+      <a href="https://en.wikipedia.org/wiki/Algebraic_geometry_and_analytic_geometry#Chow's_theorem">Chow's theorem</a>  told us projective analytic submanifolds in projective space are algebraic. The above theorem serves as a tool to determine whether $M$ is algebraic.
+    </div>
+		<p>In the following we will give a brief proof for the Kodaire embedding theorem</p>
+      <p>A projective N-space $\mathbb{CP}^N$ is defined as the space of lines in $\mathbb{C}^N$. There is a "tautological" line bundle on it.
+          $$\mathbb{C}\longrightarrow \mathcal{O}(-1) \longrightarrow \mathbb{CP}^N$$
+          whose fibre at each point is the line represented by that point.
+       </p>
+       <p>For a complex vector bundle $E$ of $M$ of finite dimension, we denote the set of the smooth sections by $\Gamma(M,E)$ and the subspace of holomorphic sections by $H^0(M,E)$, which is of finite dimension when $M$ is compact.</p>
+
+        <p>We can understand $H^0(\mathbb{P}(V),\mathcal{O}(d))$ for $d>0$, where $V=\mathbb{C}^{N+1}$, $\mathcal{O}(1)$ is the dual bundle of $\mathcal{O}(-1)$ and $\mathcal{O}(d)= \mathcal{O}(1)^{\otimes d}$. In fact, take any linear function on $V$, say $z\in V^*$, then
+          $$\begin{array}{ccc}
+            V& \stackrel{z}{\longrightarrow}& \mathbb{C}\\
+            \cup & \nearrow & \\
+            \mathscr{l}
+            \end{array}
+          $$
+          So $z$ restricts to $\mathscr{l}^*$ and thus can be viewed as a section of $\mathcal{O}(1)$. Thus, we have an intrinsic embedding
+          $$V^*\hookrightarrow H^0(\mathbb{P}(V),\mathcal{O}(1))$$
+        </p>
+        <p>In fact, we have
+          $$V^*\cong H^0(\mathbb{P}(V),\mathcal{O}(1))$$
+          More generally, we have
+          $$S^dV^*\cong H^0(\mathbb{P}(V),\mathcal{O}(d))$$
+          and $S^dV^*$ is the space of homogeneous polynomials of degree d.
+        </p>
+		<p>If $M$ admits a line bundle $L$ and two smooth sections $s_1, s_2\in \Gamma(M,L)$, the map
+			$$\frac{s_1}{s_2}:M\backslash\{s_2=0\}\rightarrow \mathbb{C}$$
+			is well defined and smooth. We could also rewrite it as
+			$$[s_1,s_2]:M\backslash\{s_1=0=s_2\}\rightarrow \mathbb{CP}^1$$
+		</p>
+		<p>More generally, given a finite-dimension vector space $V\subset \Gamma(M,L)$, then the map is defined
+			$$f:M\backslash(\cap_{s\in V}\{s=0\})\longrightarrow \mathbb{P}(V^*)$$
+			It seems that the bigger $V$ is then the zero locus is the smaller.
+			If chosen a basis $s_1,...,s_{N+1}\in V$ and if $s_i$’s
+			<ul>
+				<li>are not simultaneously zero $\leadsto M\stackrel{f}{\rightarrow} \mathbb{CP}^N$  </li>
+				<li>separate points $\leadsto M\stackrel{f}{\hookrightarrow} \mathbb{CP}^N$</li>
+			</ul>
+		</p>
+		<div class="theorem">
+		<u style="color:green">Exercise</u>
+		<p>verify that if $f$ is an embedding, then
+			$$L=f^*\mathcal{O}(1)$$
+			such that $s_i=f^* z_i=z_i\circ f$.
+			$$\begin{array}{cccc}
+				L= & f^*\mathcal{O}(1) & \rightarrow & \mathcal{O}(1)\\
+				 & \downarrow & &
+				 \downarrow \\
+				 & M & \stackrel{f}{\hookrightarrow} & \mathbb{CP}^N
+			\end{array}$$
+
+		</p>
+		</div>
+		<p>
+			By adding more and more sections from $\Gamma(M,L)$, we have
+			$$\begin{array}{cccccccc}
+				L &\rightarrow & \mathcal{O}(1) & \hookrightarrow & \mathcal{O}(1)& \hookrightarrow& ... & \mathcal{O}(1)\\
+				 \downarrow& & \downarrow & & \downarrow& & &
+				 \downarrow \\
+				  M & \stackrel{f}{\hookrightarrow} & \mathbb{CP}^N & \hookrightarrow & \mathbb{CP}^{N+1} & \hookrightarrow& ... & \mathbb{CP}^{\infty}
+				 \end{array}$$
+
+		</p>
+		<p>One can show that $M\stackrel{f}{\rightarrow} \mathbb{CP}^{\infty}$ is unique up to the isomorphic classes of $L$.
+			$$\begin{array}{ccc}
+				[M,\mathbb{CP}^{\infty}]&\stackrel{\cong}{\rightarrow}& \{line \ bundles/M\}/\sim \\
+				f&\mapsto& f^*\mathcal{O}(1)
+				\end{array}
+			$$
+			where $[M,\mathbb{CP}^{\infty}]=\pi_0(Map(M,\mathbb{CP}^\infty)$ is the set of all maps up to homotopy. The isomorphism above says that the functor sending a complex manifold to the set of line bundles over the manifold is representable by $\mathbb{CP}^{\infty}$
+		</p>
+		<hr />
+		<b>Remark:</b>
+		<p>This process generates to higher-rank vector bundles.</p>
+		<p>Let $E$ be a rank r complex vector bundle over $M$. An $N$ dimensional subspace $V^N$ of the global sections $\Gamma(M,E)$ <b>”generates”</b> $E$ if the evaluation map at each point x, $ev_x:V^N\rightarrow E_x$, is subjective. Thus $V^N$ leads to a map to the grassmannians:
+			$$\leadsto f:M\longrightarrow Gr(N-r,V)\cong Gr(r,V^*)$$
+			such that $f(x)=ker(ev_x)$.
+			By adding more and more sections, $E$ induces such a map
+			$$f:M\longrightarrow Gr(r,\infty)$$
+		</p>
+		<p>In the same manner, one can show the following isomorphism:
+
+			$$\begin{array}{ccc}
+				[M,Gr(r,\infty)]&\stackrel{\cong}{\rightarrow}& \{rank \ r \ complex \ vector \ bundles/M\}/\sim \\
+				f&\mapsto& f^*\mathcal{E}
+				\end{array}
+				$$
+			where $\mathcal{E}$ is the tautological vector bundle of the grassmannian $Gr(r,\infty)$.
+		</p>
+		<p>If $E=f^*\mathcal{E}$, then $E$ is assigned several topological invariants $c_i(E)=f^*(c_i)\in H^{2i}(M)$, called i-th <b>Chern class</b>.
+			Here $c_i$ comes from $H^*(Gr(r,\infty))\cong \mathbb{C}[c_1,c_2,...,c_r]$ and $f^*$ is the pull back of $f$.
+			By definition, $c_i(E)$ is functorial.
+		</p>
+		<hr />
+		<p>Back to the problem on conditions for the existence of holomorphic embedding.</p>
+		<p>For a holomorphic line bundle $L$, according to the <a href="https://en.wikipedia.org/wiki/Hirzebruch–Riemann–Roch_theorem">Hirzebruch-Riemann-Roch theorem</a> and Chern-Weil theory, but here we forgot the coefficients and focus on the main terms:
+			$$
+			\begin{align}
+			\chi(M,L)&=dim H^0-dim H^1+...+(-1)^n dim H^n\\
+
+			&=\int_M Td(T_M)\cdot ch(L)\\
+			  &=\int_M(1+Rc(M)+\cdots)e^{\frac{i}{2n}F_L}\\
+			  &=\int_M (F_L^n+ F_L^{n-1}\cdot Rc(M)+F_L^{n-2}Td_2+\cdots)
+			\end{align}
+			$$he Chern characters, while $F_L$ is the curvature of $L$ and $Rc(M)$ denotes the Ricci curvature of $M$
+
+		</p>
+		<p>If replaced $L$ by $L^{\otimes k}$, then $F_{L^{\otimes k}}=k F_L$ implies that
+			$$
+			\chi(M,L^k)
+			  =\int_M (k^nF_L^n+ k^{n-1}F_L^{n-1} \cdot Rc(M)+k^{n-2}F_L^{n-2}Td_2+\cdots)
+			$$
+			Thus for a positive line bundle, when $k>>0\Rightarrow \chi(M,L^{\otimes k})\gg 0$
+		</p>
+		<p><a href="https://en.wikipedia.org/wiki/Kodaira_vanishing_theorem">Kodaira vanishing theorem</a> says
+			$$Rc(M)+kF_L>0\Rightarrow H^q(M,L^{\otimes k})=0, q>0$$
+			Therefore, for $k$ large enough, $dim H^0(M,L)=\chi(M,L)\gg 0$ and have enough sections to create an holomorphic embedding$\leadsto M\hookrightarrow \mathbb{CP}^N$. The Kodaira embedding theorem is proved.
+		</p><p style="text-align:right">$\square$</p>
+    <hr>
+    <p>The vanishing theorems play an important role in the proof. Parallel to the Kodaira vanishing theorem in complex setting, we have the following theorem also bridging the curvature and homology.</p>
+    <div class="theorem">
+      <span>Bochner vanishing theorem</span><span class="theorem-name">(1946)</span>
+      <p>
+        For a compact orientable Riemannian manifold $M$ with nonnegative Ricci curvature, then $b_1=0$.
+          </p>
+    </div>
+    <div class="proof">
+      <span>Proof.</span>
+      $$H^1(M,\mathbb{R}) \xlongequal[]{Hodge} \Omega^1(M)\cap Ker(\Delta)$$
+        $$0=\Delta\phi \xlongequal[]{\phi\in \Omega^1(M)}\nabla^*\nabla\phi+Rc(\phi)$$
+        $$0=\int <\nabla^*\nabla\phi,\phi>+\int < Rc(\phi),\phi>$$
+        <p>Since the latter is nonnegative, $\int|\Delta \phi|^2 = 0$. So $\phi=0$.</p>
+    </div>
+    <hr>
+    <b>Remark:</b>
+      <p>If the Ricci curvature of $M$ is everywhere positive definite, then the above theorem says $H^1(M,\mathbb{R})=0$. However, this may not lead to the conclusion $H^1(M,\mathbb{Z})=\frac{\pi_1(M)}{[\pi_1(M),\pi_1(M)]}=0$. But we have $\#\pi_1(M)< 0$</p>
+
+      <div class="theorem">
+        <span>Theorem</span><br>
+        If $M$ is a complete manifold,and the Ricci curvature is bounded away from zero, then $\#\pi_1(M)< 0$.
+      </div>
+      <div class="proof">
+        <span>Proof.</span>
+        <p>Suppose $Rc\geq \epsilon>0$. Then for a geodesic $\gamma(t)$ with $length(\gamma)>\frac{c}{\epsilon}$, one can show $\gamma(t)$ contains conjugate points. So $M$ is bounded, and thus compact. The Ricci curvature on the universal cover $\tilde{M}$ also satisfies the condition and so  $\tilde{M}$ is compact $\Rightarrow \#\pi_1<\infty$. </p>
+      </div>
+      <h2>II. Classification of Manifolds</h2>
+        <h3>II.1 On subspaces</h3>
+        <p>We firstly consider the geometry of subspaces of a manifold $M$. Instead of thinking of inclusions $C\subset M$, geometry of a subspace could be considered as a map $C\rightarrow M$ composing with some conditions compatible with the structures of $M$.</p>
+        <h4>0-dimension:</h4>
+        <p>0-dimemsional subspaces are discrete points of $M$. In the finite case, We would count with multiplicity and have the following identification:
+          $$\{n \ \text{points}\}=\frac{Map(\{1,...,n\}\rightarrow M)}{S_n}=\frac{M\times\cdots\times M}{S_n}$$
+         </p>
+         <p>The space $S^{(n)}M:=\frac{(M)^n}{S_n}$ is called the n-th "symmetric product (or symmetric power)" of $M$ and is definitely an "<a href="https://en.wikipedia.org/wiki/Orbifold">orbifold</a>". It is usually with boundary and even with singularities.</p>
+         <p>For examples
+           <ul>
+             <li>if $dim M=1$,  $M=\mathbb{R}$ or $M=\mathbb{S}^1$, then $S^{(n)}\mathbb{R}$ is a polyhedron which homeomorphic to $\mathbb{R}\times \mathbb{R_+}^{n-1}$ and  $S^{(n)}\mathbb{S}^1$ is homotopic to $S^{(n)}\mathbb{C}^*=\mathbb{C}^*\times \mathbb{C}^{n-1}.$ $S^{(n)}\mathbb{S}^1$ is also a fibre bundle over $S^{1}$ with fibre an $n-1$ simplex. If $n$ is odd the bundle is orientable. if $n$ is even then it is not(see <a href="https://ncatlab.org/nlab/show/symmetric+product+of+circles">symmetric product of circles</a>).</li>
+             <li>if $dim M=2$, then $S^{(n)}M$ would always be without boundary and singularities. One can see this by identifying $S^{(n)}\mathbb{C}$ with polynomials of degree n over complex numbers or just via the algebraic coordinate ring. </li>
+             <li>if $dim M=4$ and $M$ is a complex surface, then $S^{(n)}M$ admits a projective resolution of singularities, $S^{[n]}M\rightarrow S^{(n)}M$ called the Douady-Barlet morphism and $S^{[n]}M$ is a 2n-dimensional smooth complex manifolds called the Douady space. When $M$ is algebraic, the Douady space is the usual Hilbert scheme $Hilb^n(S)$.(see <a href="https://arxiv.org/abs/math/9811159">	arXiv:math/9811159</a>)</li>
+           </ul>
+           <h4>1-dimension:</h4>
+           <p>Under the topological setting, the construction of <b><a href="https://en.wikipedia.org/wiki/Loop_space">loop space</a></b> $\mathfrak{L}X=Map(\mathbb{S}^1,M)$ with compact-open topology is a right adjoint functor. It is usually of infinite dimension. The based loop space $\Omega_b(M):=\{\gamma\in \mathfrak{L}X: \gamma(1)=b\}$ would be smaller and the set $\pi(M,b)$ of connected components of $\Omega_b(M)$ is equiped with a group structure revealing a lot about the topology of the space.
+           </p>
+           <p>If $M$ is smooth, the representative can be chosen to be smooth since every continuous map is continuously homotopic to a differentiable mapping.(<a href="https://math.stackexchange.com/questions/298873/approximate-continuous-mapping-by-smooth-mappings-on-manifoldbott-tu-book">Whitney Approximation on Manifolds</a> ) </p>
+           <p>  If $M$ is a Riemannian manifold, we could choose a canonical representative for each component of $\Omega_b(M)$ via minimizing "energy" $E: \Omega_b(M)\rightarrow \mathbb{R}$ and $E(\gamma)=\int_0^1\mid\frac{d\gamma}{dt}\mid^2 dt$. Thus, the representatives come from those geodesics. The second variation of $E$ is related to curvature and in the part of embedding theorems we showed conditions on curvature go back to the restraints for topology.</p>
+           <h4>2-dimension:</h4>
+           <p>Let $C^2$ denote a 2-dimension surface </p>
+
+
+
+         </p>
+
+
+        <h3>II.2 On base space</h3>
+      </div><!--      目录取值截止     -->
+      <div class="footer" style="float:none">
+        <hr>
+        <h2 style="font-size:15px;">Lecture notes taken by: WEI Yunsong; 2021/1</h2>
+      </div>
+  </div>
+
+    </div>
+
+
+<!-- header -->
+
+</body>
+</html>
